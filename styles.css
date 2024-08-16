@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, sans-serif;
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; 
+    /* width: 100%; */
+
+}
+.box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 30%;
+    background-color: #f9f9f9;
+    min-height: 200px;
+}
+.droppable {
+    min-height: 50px;
+    margin: 10px 0;
+    padding: 10px;
+    border: 2px dashed #ccc;
+    background-color: #fff;
+}
+.draggable {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    cursor: move;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    width:100%;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
