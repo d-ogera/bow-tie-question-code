@@ -92,7 +92,7 @@ $parameters_result = $conn->query($parameters_query);
         <div class="box">
             <h4>Actions</h4>
             <?php while($action = $actions_result->fetch_assoc()): ?>
-                <div id="<?= $action['action_id'] ?>" 
+                <div id="a<?= $action['action_id'] ?>" 
                      class="draggable" 
                      draggable="true" 
                      ondragstart="drag(event)" 
@@ -106,7 +106,7 @@ $parameters_result = $conn->query($parameters_query);
         <div class="box">
             <h4>Conditions</h4>
             <?php while($condition = $conditions_result->fetch_assoc()): ?>
-                <div id="<?= $condition['condition_id'] ?>" 
+                <div id="b<?= $condition['condition_id'] ?>" 
                      class="draggable" 
                      draggable="true" 
                      ondragstart="drag(event)" 
@@ -120,7 +120,7 @@ $parameters_result = $conn->query($parameters_query);
         <div class="box">
             <h4>Parameters</h4>
             <?php while($parameter = $parameters_result->fetch_assoc()): ?>
-                <div id="<?= $parameter['parameter_id'] ?>" 
+                <div id="c<?= $parameter['parameter_id'] ?>" 
                      class="draggable" 
                      draggable="true" 
                      ondragstart="drag(event)" 
@@ -147,11 +147,18 @@ $parameters_result = $conn->query($parameters_query);
         event.preventDefault();
         var data = event.dataTransfer.getData("text");
         var element = document.getElementById(data);
-        event.target.appendChild(element);
+        var target = event.target;
 
-        // Set the hidden input value to the dragged option's data-value
-        var hiddenInputId = event.target.querySelector('input[type="hidden"]').id;
-        document.getElementById(hiddenInputId).value = element.getAttribute("data-value");
+        // Avoid appending element to other elements
+        if (target.classList.contains('droppable')) {
+            target.appendChild(element);
+
+            // Set the hidden input value to the dragged option's data-value
+            var hiddenInput = target.querySelector('input[type="hidden"]');
+            if (hiddenInput) {
+                hiddenInput.value = element.getAttribute("data-value");
+            }
+        }
     }
 </script>
 
