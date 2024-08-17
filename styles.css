@@ -5,9 +5,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px; 
-    /* width: 100%; */
-
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Allow items to wrap */
 }
 .box {
     border: 1px solid #ccc;
@@ -15,6 +14,7 @@ body {
     width: 30%;
     background-color: #f9f9f9;
     min-height: 200px;
+    box-sizing: border-box;
 }
 .droppable {
     min-height: 50px;
@@ -31,6 +31,25 @@ body {
     cursor: move;
 }
 
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .box {
+        width: 100%;
+        margin-bottom: 20px; /* Add space between stacked items */
+    }
+}
+
+@media (max-width: 480px) {
+    .box {
+        padding: 15px;
+    }
+    .droppable {
+        padding: 8px;
+    }
+    .draggable {
+        padding: 8px;
+    }
+}
 .form-group {
     margin-bottom: 20px;
     width:100%;
