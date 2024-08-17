@@ -2,6 +2,7 @@
 require "conn.php";
 
 // Get the posted data and ensure they are integers
+$question_id = intval($_POST['question']);
 $selected_action1 = intval($_POST['selected_action1']);
 $selected_action2 = intval($_POST['selected_action2']);
 $selected_condition = intval($_POST['selected_condition']);
@@ -9,7 +10,6 @@ $selected_parameter1 = intval($_POST['selected_parameter1']);
 $selected_parameter2 = intval($_POST['selected_parameter2']);
 
 // Fetch correct answers from the database
-$question_id = 4; // Example question ID
 $user_id = 1; // Example user ID
 
 $query = "
